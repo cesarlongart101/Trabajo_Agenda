@@ -7,19 +7,33 @@ agenda = Agenda_Clase.Agenda()
 
 
 def obten_telefono():
-    
+    print("*** BUSCAR TELÉFONO ***")
     while True:
         persona = input ("Nombre de la persona: ")
         if Funciones_Utilitarias.is_valid_name(persona):
             agenda.obten_telefono(fichero, persona)
-            exit()
+            break
         
 
 def inserta_telefono():
-    pass
+    print("*** GUARDAR EN AGENDA ***")
+    while True:
+        persona = input ("Nombre: ")
+        if Funciones_Utilitarias.is_valid_name(persona):
+            numero = input ("Número: ")
+            if Funciones_Utilitarias.is_valid_phone(numero):
+                agenda.inserta_telefono(fichero, persona, numero)
+                print("*** NOMBRE Y NÚMERO GUARDADO CON ÉXITO ***")
+                break
+        
 
 def elimina_telefono():
-    pass
+    print("*** ELIMINAR EN AGENDA ***")
+    while True:
+        persona = input ("Nombre: ")
+        if Funciones_Utilitarias.is_valid_name(persona):
+            agenda.elimina_telefono(fichero, persona)
+            break
 
 def salir_fun():
     print("*********************************************")  

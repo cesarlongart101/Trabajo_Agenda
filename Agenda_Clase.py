@@ -1,6 +1,5 @@
 class Agenda:
 
-
     def obten_telefono(Self, fichero, persona):
         with open(fichero, "r") as archivo:
             for linea in archivo:
@@ -11,14 +10,28 @@ class Agenda:
 
     def inserta_telefono(Self, fichero, persona, telefono):
         with open(fichero, "a") as archivo:
-            archivo.write(persona + "," + telefono + "\n")
+            archivo.write(persona + ", " + telefono + "\n")
+
+
 
     def elimina_telefono(Self, fichero, persona):
-        with open(fichero, "r+") as archivo:
+        with open(fichero, "r") as archivo:
             lineas = archivo.readlines()
-            archivo.seek(0)
-            for linea in lineas:
-                if persona not in linea:
-                    archivo.write(linea)
-            archivo.truncate()
+
+        encontrado = False
+        for i, linea in enumerate(lineas):
+            if persona in linea:
+                encontrado = True
+                break
+        
+        if encontrado:
+            del lineas[i]
+        
+            with open("agenda.txt", "w") as archivo:
+                archivo.writelines(lineas)
+            print("*** NOMBRE Y NÚMERO ELIMINADO CON ÉXITO ***")
+        else:
+            print("El nombre no existe en el archivo.")
+        
+
 

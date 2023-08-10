@@ -1,10 +1,16 @@
 def is_only_digits (num):
     """ Función utilitaria que valida que los dígitos ingresados sean números."""
+    cont = 0
     for i in num:
         aux = ord(i)
         if aux not in range(48,58):
+          print()
+          print("Todos los caracteres deben ser numéricos")
           return False
-        return True
+        cont = cont + 1
+        if cont == 9:
+            return True
+        
 
 def is_valid_phone(phone):
     """ Función utilitaria que valida el número de teléfono y que llama a su vez a la función is_only_digits para validar que solo contenga números."""
